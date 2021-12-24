@@ -1,0 +1,504 @@
+import turtle
+
+class korean_consonant:
+    def __init__(self):
+        self.size = 100
+        self.half = self.size / 2
+        self.quarter = self.size / 4
+        self.one_third = self.size / 3
+        self.two_third = 2 * self.size / 3
+        self.degree = 90
+        self.hundred_d = 100
+        self.set_center = 15
+        self.t = turtle.Turtle()
+        self.t.reset()
+        self.t.pensize(5)
+
+        self.t.penup()
+
+    def kiyuk(self, xy): #ㄱ COMPLETE!
+        self.t.goto(xy[0], xy[1])
+        self.t.speed(1)
+        size1 = self.size + 30
+        size2 = self.size
+        degree = self.degree
+
+        self.t.pendown()
+        self.t.fd(size1)
+        self.t.rt(degree)
+        self.t.fd(size2)
+
+        self.t.lt(degree)
+        self.t.penup()
+        x_y = [size1, size2]
+        return x_y
+
+    def double_kiyuk(self, xy): #ㄱ
+        x_size = self.half + 20
+        y_size = self.size
+        degree = self.degree
+
+        for i in range(2):
+            self.t.goto(xy[0], xy[1])
+            self.t.speed(1)
+            self.t.pendown()
+            xy[0] += x_size
+            self.t.pendown()
+            self.t.fd(x_size)
+            self.t.rt(degree)
+            self.t.fd(y_size)
+            self.t.penup()
+            self.t.lt(degree)
+
+        self.t.penup()
+        x_y = [int(2 * x_size), y_size]
+        return x_y
+
+    def nieun(self, xy): #ㄴ
+        self.t.goto(xy[0], xy[1])
+        self.t.pendown()
+        self.t.speed(1)
+        x_size = int(self.size * .80)
+        y_size = int(self.size * .70)
+
+
+        self.t.rt(self.degree)
+        self.t.fd(y_size)
+        self.t.lt(self.degree)
+        self.t.fd(x_size)
+
+        self.t.penup()
+
+        x_y = [x_size, y_size]
+        return x_y
+
+    def digeut(self, xy): #ㄷ
+        self.t.goto(xy[0], xy[1])
+        self.t.pendown()
+        self.t.speed(1)
+        x_size = self.two_third
+        y_size = self.two_third
+
+        self.t.fd(x_size)
+        self.t.penup()
+        self.t.goto(xy[0], xy[1])
+        self.t.pendown()
+        self.t.rt(self.degree)
+        self.t.fd(y_size)
+        self.t.lt(self.degree)
+        self.t.fd(x_size)
+
+        self.t.penup()
+
+        x_y = [x_size, y_size]
+        return x_y
+
+    def double_digeut(self, xy): #ㄸ
+        x_size = self.quarter + 30
+        y_size = self.half + 20
+
+        for i in range(2):
+            self.t.goto(xy[0], xy[1])
+            self.t.speed(1)
+            self.t.pendown()
+            self.t.fd(x_size)
+            self.t.penup()
+            self.t.goto(xy[0], xy[1])
+            xy[0] += x_size
+            self.t.pendown()
+            self.t.rt(self.degree)
+            self.t.fd(y_size)
+            self.t.lt(self.degree)
+            self.t.fd(x_size)
+            self.t.penup()
+
+        x_y = [int(2 * x_size), y_size]
+        return x_y
+
+    def rieul(self, xy): #ㄹ
+        size = self.size
+        one_third = self.one_third
+
+
+        self.t.goto(xy[0], xy[1])
+        self.t.pendown()
+        self.t.fd(size)
+        self.t.rt(self.degree)
+        self.t.fd(one_third)
+        self.t.penup()
+        self.t.goto(xy[0], xy[1] - one_third)
+        self.t.pendown()
+        self.t.lt(self.degree)
+        self.t.fd(size)
+        self.t.goto(xy[0], xy[1] - one_third)
+        self.t.rt(self.degree)
+        self.t.fd(one_third)
+        self.t.lt(self.degree)
+        self.t.fd(size)
+
+        self.t.penup()
+
+        x_y = [size, int(2 * one_third)]
+        return x_y
+
+    def mieum(self, xy): #ㅁ
+
+        x_size = self.size
+        y_size = self.two_third
+
+
+        self.t.goto(xy[0], xy[1])
+        self.t.pendown()
+        self.t.rt(self.degree)
+        self.t.fd(y_size)
+        self.t.penup()
+        self.t.goto(xy[0], xy[1])
+        self.t.pendown()
+        self.t.lt(self.degree)
+        self.t.fd(x_size)
+        self.t.rt(self.degree)
+        self.t.fd(y_size)
+        self.t.penup()
+        self.t.goto(xy[0], xy[1] - y_size)
+        self.t.lt(self.degree)
+        self.t.pendown()
+        self.t.fd(x_size)
+
+        self.t.penup()
+
+        x_y = [x_size, y_size]
+        return x_y
+
+    def bieub(self, xy): #ㅂ
+
+        size = self.size
+        x_size = (size / 2) + 30
+
+        self.t.goto(xy[0], xy[1])
+        self.t.pendown()
+        self.t.rt(self.degree)
+        self.t.fd(size)
+        self.t.penup()
+        self.t.goto(xy[0] + x_size, xy[1])
+        self.t.pendown()
+        self.t.fd(size)
+        self.t.penup()
+        self.t.goto(xy[0], xy[1] - size / 2)
+        self.t.lt(self.degree)
+        self.t.pendown()
+        self.t.fd(x_size)
+        self.t.penup()
+        self.t.goto(xy[0], xy[1] - size)
+        self.t.pendown()
+        self.t.fd(size / 2 + 30)
+
+        self.t.penup()
+
+        x_y = [size / 2, size]
+        return x_y
+
+    def double_bieub(self, xy): #ㅃ
+
+        size = self.half
+
+        for i in range(2):
+            self.t.goto(xy[0], xy[1])
+            self.t.pendown()
+            self.t.rt(self.degree)
+            self.t.fd(size)
+            self.t.penup()
+            self.t.goto(xy[0] + size / 2, xy[1])
+            self.t.pendown()
+            self.t.fd(size)
+            self.t.penup()
+            self.t.goto(xy[0], xy[1] - size / 2)
+            self.t.lt(self.degree)
+            self.t.pendown()
+            self.t.fd(size / 2)
+            self.t.penup()
+            self.t.goto(xy[0], xy[1] - size)
+            self.t.pendown()
+            self.t.fd(size / 2)
+            self.t.penup()
+            xy[0] += (size / 2 + 10)
+
+        x_y = [size + 10, size]
+        return x_y
+
+    def sieut(self, xy): #ㅅ
+        size = self.size
+        half = self.half
+        one_third = self.one_third
+        twenty_p = size * .20
+
+        self.t.goto(xy[0] + half, xy[1])
+        self.t.pendown()
+        self.t.lt(self.degree - 30)
+        self.t.bk(size)
+        self.t.penup()
+        self.t.goto(xy[0] + one_third, xy[1] - one_third)
+        self.t.pendown()
+        self.t.rt(self.hundred_d)
+        self.t.fd(size - twenty_p)
+
+        self.t.penup()
+        self.t.lt(self.hundred_d)
+        self.t.rt(self.degree - 30)
+
+        x_y = [size, size]
+        return x_y
+
+    def double_sieut(self, xy): #ㅆ
+        size = self.half
+
+        half = size / 2
+        one_third = size / 3
+        twenty_p = size * .1
+
+        self.t.goto(xy[0] + half, xy[1])
+        self.t.pendown()
+        self.t.lt(self.degree - 30)
+        self.t.bk(size)
+        self.t.penup()
+        self.t.goto(xy[0] + one_third, xy[1] - one_third)
+        self.t.pendown()
+        self.t.rt(self.hundred_d)
+        self.t.fd(size - twenty_p -13)
+
+        self.t.penup()
+        xy[0] += size + (twenty_p) - 13
+        self.t.lt(self.hundred_d)
+        self.t.rt(self.degree - 30)
+        self.t.goto(xy[0] + half, xy[1])
+        self.t.pendown()
+        self.t.lt(self.degree - 30)
+        self.t.bk(size + 5)
+        self.t.penup()
+        self.t.goto(xy[0] + one_third, xy[1] - one_third - 5)
+        self.t.pendown()
+        self.t.rt(self.hundred_d)
+        self.t.fd(size - twenty_p - 10)
+
+        self.t.penup()
+        xy[0] += size + (twenty_p)
+        self.t.lt(self.hundred_d)
+        self.t.rt(self.degree - 30)
+
+        x_y = [2 * size, 2 * size]
+        return x_y
+
+    def ieung(self, xy): #o 
+        size = self.half
+
+        self.t.goto(xy[0] + size, xy[1] - size)
+        self.t.pendown()
+        self.t.circle(size)
+
+        self.t.penup()
+        x_y = [int(2 * size), int(2 * size)]
+        return x_y
+
+    def jieut(self, xy): #ㅈ 
+        size = self.size
+        forty_d = 40
+        seven_half_d = 75
+        one_third = self.one_third
+        one_third_pt = self.one_third + 30
+        twenty_p = size * .20
+        minus = size - twenty_p - 10
+
+        self.t.goto(xy[0], xy[1])
+        self.t.pendown()
+        self.t.fd(size)
+        self.t.lt(forty_d)
+        self.t.bk(size + 20)
+        self.t.penup()
+        self.t.goto(xy[0] + one_third_pt, xy[1] - one_third)
+        self.t.pendown()
+        self.t.rt(seven_half_d)
+        self.t.fd(minus)
+
+        self.t.penup()
+        self.t.lt(seven_half_d)
+        self.t.rt(forty_d)
+
+        x_y = [size, size]
+        return x_y
+
+    def chieut(self, xy): #ㅊ
+        size = self.size
+        half = self.half
+        forty_d = 40
+        seven_half_d = 75
+        one_third = self.one_third
+        two_third = 2 * one_third
+        twenty_p = size * .20
+        one_third_pt = self.one_third + 30
+        twenty_p = size * .20
+        minus = size - twenty_p - 10
+
+        self.t.goto(xy[0] + half, xy[1])
+        self.t.pendown()
+        self.t.rt(self.degree)
+        self.t.fd(one_third)
+        self.t.penup()
+
+        self.t.lt(self.degree)
+        self.t.goto(xy[0], xy[1] - one_third)
+        self.t.pendown()
+        self.t.fd(size)
+        self.t.lt(forty_d)
+        self.t.bk(size + 20)
+        self.t.penup()
+        self.t.goto(xy[0] + one_third_pt, xy[1] - two_third)
+        self.t.pendown()
+        self.t.rt(seven_half_d)
+        self.t.fd(minus)
+
+        self.t.penup()
+        self.t.lt(seven_half_d)
+        self.t.rt(forty_d)
+
+        x_y = [size + one_third, size]
+        return x_y
+
+    def double_jieut(self, xy): #ㅉ
+        size = self.half
+        forty_d = 40
+        seven_half_d = 75
+        half = size / 2
+        one_third = size / 3
+        twenty_p = size * .20
+        five_p = size * .05
+        one_third_pt = one_third + 30
+        twenty_p = size * .20
+        minus = size - twenty_p - 10
+
+        for i in range(2):
+            self.t.goto(xy[0], xy[1])
+            self.t.pendown()
+            self.t.fd(size)
+            self.t.lt(forty_d)
+            self.t.bk(size)
+            self.t.penup()
+            self.t.goto(xy[0] + one_third_pt, xy[1] - one_third)
+            self.t.pendown()
+            self.t.rt(seven_half_d)
+            self.t.fd(minus)
+
+            self.t.penup()
+            xy[0] += size + five_p
+            self.t.lt(seven_half_d)
+            self.t.rt(forty_d )
+
+        x_y = [size + one_third, size]
+        return x_y
+
+    def kieuk(self, xy): #ㅋ
+
+        moving_x = 0
+
+        size = self.size
+        half = self.half
+        degree = self.degree
+        third_Q = self.degree + half /4
+
+        self.t.goto(xy[0], xy[1])
+        self.t.pendown()
+        self.t.fd(size)
+        self.t.rt(degree)
+        self.t.fd(size)
+        self.t.penup()
+        self.t.goto(xy[0] + moving_x, xy[1] - half)
+        self.t.lt(degree)
+        self.t.pendown()
+        self.t.fd(third_Q)
+
+        self.t.penup()
+
+        x_y = [size, size]
+        return x_y
+
+    def tieut(self, xy): #ㅌ
+
+        size = self.size
+        two_third = self.two_third
+
+        self.t.goto(xy[0], xy[1])
+        self.t.pendown()
+        self.t.fd(size)
+        self.t.penup()
+        self.t.goto(xy[0], xy[1] - two_third / 2)
+        self.t.pendown()
+        self.t.fd(size)
+        self.t.penup()
+        self.t.goto(xy[0], xy[1])
+        self.t.pendown()
+        self.t.rt(self.degree)
+        self.t.fd(two_third)
+        self.t.lt(self.degree)
+
+
+        self.t.fd(size)
+        self.t.penup()
+        x_y = [size, two_third]
+        return x_y
+
+
+
+    def pieup(self, xy): #ㅍ
+
+        size = self.size
+        quarter = self.quarter
+        moving_y = int(size * .40) + 10
+
+        three_q = size * 3 / 4
+
+        self.t.goto(xy[0], xy[1])
+        self.t.pendown()
+        self.t.fd(size)
+        self.t.penup()
+        self.t.goto(xy[0] + quarter, xy[1])
+        self.t.pendown()
+        self.t.rt(self.degree)
+        self.t.fd(moving_y)
+        self.t.penup()
+        self.t.goto(xy[0] + three_q, xy[1])
+        self.t.pendown()
+        self.t.fd(moving_y)
+        self.t.penup()
+        self.t.goto(xy[0], xy[1] - moving_y)
+        self.t.pendown()
+        self.t.lt(self.degree)
+        self.t.fd(size)
+
+        self.t.penup()
+
+        x_y = [size, moving_y]
+        return x_y
+
+    def hieuh(self, xy): #ㅎ
+
+        size = self.size
+        moving_x = self.half
+        quarter = self.quarter
+        seventy = size * .7
+
+        self.t.goto(xy[0] + moving_x, xy[1] + quarter)
+        self.t.pendown()
+        self.t.rt(self.degree)
+        self.t.fd(quarter)
+        self.t.penup()
+        self.t.goto(xy[0], xy[1])
+        self.t.pendown()
+        self.t.lt(self.degree)
+        self.t.fd(size)
+        self.t.penup()
+        self.t.goto(xy[0] + moving_x, xy[1] - seventy)
+        self.t.pendown()
+        self.t.circle(quarter)
+
+        self.t.penup()
+
+        x_y = [size, 3 * quarter + seventy]
+        return x_y
